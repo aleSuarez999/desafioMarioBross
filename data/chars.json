@@ -1,0 +1,29 @@
+{
+  "chars": [
+    {
+      "name": "Mario",
+      "extName": "Mario"
+    },{
+      "name": "Luigi",
+      "extName": "Luigi"
+    },{
+      "name": "Bowser",
+      "extName": "Bowser Morton Koopa"
+    },{
+      "name": "Peach",
+      "extName": "Princesa Peach Toadstool"
+    },{
+      "name": "Yoshi",
+      "extName": "T. Yoshisaur Munchakoopas"
+    },{
+      "name": "Toad",
+      "extName": "Toad"
+    },{
+      "name": "Toadette",
+      "extName": "Toadette"
+    },{
+      "name": "Daisy",
+      "extName": "Princesa Daisy"
+    }
+  ]
+}
