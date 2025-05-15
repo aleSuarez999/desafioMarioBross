@@ -9,6 +9,8 @@ const chars1 = {
     "Daisy": "Princesa Daisy"
 }
 
+var arrChar = []
+
 const readChars = async () => {
     const response = await fetch("data/chars.json", { method: "GET" })
     // await espera a que fetch devuelva datos para pasar de renglon
@@ -37,8 +39,10 @@ const leerChars = () => {
         
             // console.log(data)
             // PUNTO 2 MOSTRAR EL NOMBRE EN EL SPAN 
+
             nameExt = findChar(data)
-            if (nameExt > -1)
+            console.log("nombre largo ", nameExt)
+            if (nameExt != -1)
             {
                 spanTag.innerText = nameExt
                 //showChar(selectedChar)
@@ -70,7 +74,7 @@ const addEvents = () => {
 
 const findChar = array => {
     console.log(array)
-    const indice = array.findIndex(personaje => personaje.name === selectedChar)  // busca coincidencia
+    const indice = array.findIndex(personaje => personaje.name.toLowerCase() === selectedChar.toLowerCase())  // busca coincidencia
     if (indice == -1)
         return -1 // no existe el nombre
 
@@ -81,9 +85,9 @@ const findChar = array => {
     return array[indice].extName
 }
 
-const showChar = (selectedChar) => {
+const showChar = (selectedCharClick) => {
     //alert("por acaLuig")
-    let idSelected = selectedChar.toLowerCase()
+    let idSelected = selectedCharClick.toLowerCase()
     console.log("id elemento seleccionado", idSelected)
     if (charActual == idSelected) // si se clickea el que está presionado
     {
@@ -101,8 +105,11 @@ const showChar = (selectedChar) => {
 
 }
 
-const showPrompt = () => {
-    selectedChar = prompt("¿Quién se presenta hoy? \n (Mario, Luigi, Bowser, Peach, Yoshi, Toad, Toadette, Daisy)")
+const showPrompt = (personaje) => {
+    if (personaje == "")
+        selectedChar = prompt("¿Quién se presenta hoy? \n (Mario, Luigi, Bowser, Peach, Yoshi, Toad, Toadette, Daisy)")
+    else 
+        selectedChar = personaje
     console.log("Se eligió : ", selectedChar)
     let boton = document.getElementById("showButton")
     // boton.style.display = "none" punto 6 pide que desaparezca el boton
@@ -110,7 +117,7 @@ const showPrompt = () => {
 
 let boton = document.getElementById("showButton")
 boton.addEventListener("click", function (e) {
-    showPrompt();
+    showPrompt("");
     leerChars();
 });
 
@@ -123,7 +130,11 @@ const constAddEvent = (array) => {
         console.log()
         let divChar = document.getElementById(char.name.toLowerCase())
         divChar.addEventListener("click", function (e) {
-            showChar(divChar.id)
+        showPrompt(divChar.id);
+
+        leerChars();
+    //        showChar(divChar.id)
+            
         })
     }
 }
