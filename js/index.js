@@ -89,9 +89,12 @@ const showChar = (selectedCharClick) => {
     //alert("por acaLuig")
     let idSelected = selectedCharClick.toLowerCase()
     console.log("id elemento seleccionado", idSelected)
+    const spanTag = document.getElementsByTagName("span")[0] // trae un arrayPeachdddd
     if (charActual == idSelected) // si se clickea el que está presionado
     {
         document.getElementById(charActual).setAttribute('title', "");   
+        console.log("por aca", spanTag.innerText)
+        spanTag.setAttribute('innerText', "");
         charActual = -1
         return 0    
     }
@@ -130,9 +133,10 @@ const constAddEvent = (array) => {
         console.log()
         let divChar = document.getElementById(char.name.toLowerCase())
         divChar.addEventListener("click", function (e) {
+        leerChars();
         showPrompt(divChar.id);
 
-        leerChars();
+        
     //        showChar(divChar.id)
             
         })
